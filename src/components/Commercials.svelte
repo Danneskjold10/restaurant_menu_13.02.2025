@@ -1,17 +1,17 @@
 <script>
     let commercials = [
       {
-        image: "commercial1.jpg",
+        image: "images/commercials/commercial1.jpg",
         description: "Delicious Burgers!",
         price: "$9.99",
       },
       {
-        image: "commercial2.jpg",
+        image: "images/commercials/commercial2.jpg",
         description: "Crispy Nuggets!",
         price: "$5.99",
       },
       {
-        image: "commercial3.jpg",
+        image: "images/commercials/commercial3.jpg",
         description: "Fresh Sandwiches!",
         price: "$7.99",
       },
