@@ -82,30 +82,27 @@
     }, 10000); // Change category every 10 seconds
   </script>
   
-  <div class="h-screen flex flex-col justify-between bg-black text-white p-8">
+  <div class="h-screen flex flex-col bg-black text-white">
     <!-- Top Section: Menu Items -->
-    <div class="w-full">
-      <h1 class="text-4xl font-bold mb-6">{menus[currentCategoryIndex].category}</h1>
+    <div class="w-full p-4">
+      <h1 class="text-3xl font-bold mb-4">{menus[currentCategoryIndex].category}</h1>
       {#each menus[currentCategoryIndex].items as item}
-        <div class="flex justify-between items-start mb-6">
+        <div class="flex justify-between items-start mb-4">
           <!-- Left Side: Name and Description -->
-          <div class="w-1/2">
-            <h2 class="text-2xl font-semibold">{item.name}</h2>
-            <p class="text-xl">{item.description}</p>
+          <div class="w-2/3">
+            <h2 class="text-xl font-semibold">{item.name}</h2>
+            <p class="text-lg">{item.description}</p>
           </div>
   
           <!-- Right Side: Solo and Menu Prices -->
-          <div class="w-1/2 flex justify-end gap-8">
-            <!-- Solo Price -->
-            <div class="text-right">
-              <div class="text-2xl font-semibold">Solo</div>
-              <div class="text-xl">{item.priceSolo}</div>
+          <div class="w-1/3 flex flex-col items-end">
+            <div class="flex gap-4">
+              <div class="text-xl font-semibold">Solo</div>
+              <div class="text-xl font-semibold">Menu</div>
             </div>
-  
-            <!-- Menu Price -->
-            <div class="text-right">
-              <div class="text-2xl font-semibold">Menu</div>
-              <div class="text-xl">{item.priceMenu}</div>
+            <div class="flex gap-4">
+              <div class="text-lg">{item.priceSolo}</div>
+              <div class="text-lg">{item.priceMenu}</div>
             </div>
           </div>
         </div>
@@ -116,6 +113,6 @@
     <img
       src={menus[currentCategoryIndex].image}
       alt={menus[currentCategoryIndex].category}
-      class="w-full h-[30vh] object-cover"
+      class="w-full h-[40vh] object-cover"
     />
   </div>
