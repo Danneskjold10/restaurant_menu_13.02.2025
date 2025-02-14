@@ -81,44 +81,49 @@
 <div class="w-screen h-screen flex flex-col items-center bg-gray-900 text-white">
   {#if !showMenu}
     <div class="relative w-full h-full flex flex-col justify-center items-center">
+      <!-- Image Carousel -->
       <img src={slides[currentSlide].image} 
            alt={slides[currentSlide].text} 
-           class="h-2/3 object-cover" />
+           class="h-2/3 object-contain" />
     
-    <!-- Title -->
-    <div class="absolute top-5 text-3xl font-bold">{slides[currentSlide].text}</div>
+      <!-- Title -->
+      <div class="absolute top-5 text-3xl font-bold">{slides[currentSlide].text}</div>
   
-    <!-- Description Bubble -->
-    <div class="absolute bottom-16 bg-gray-800 text-white px-4 py-2 rounded-lg text-lg w-3/4 text-center shadow-lg">
-      {slides[currentSlide].description}
-    </div>
-  
-    <!-- Price Tag -->
-    <div class="absolute bottom-5 bg-yellow-400 text-black px-4 py-2 rounded-full text-2xl">
-      {slides[currentSlide].price}
-    </div>
-  </div>
-  
-  {:else}
-  <div class="w-full h-full flex flex-col text-center">
-    <h1 class="text-4xl font-bold mt-4">{menus[currentMenu].name}</h1>
-    <div class="flex flex-col items-center w-full flex-grow">
-      <div class="flex w-full justify-between border-b pb-2 text-xl font-bold">
-        <span class="w-2/4 text-left">Item</span>
-        <span class="w-1/4 text-right">Solo</span>
-        <span class="w-1/4 text-left ml-4">Menu</span>
+      <!-- Description Bubble -->
+      <div class="absolute bottom-16 bg-gray-800 text-white px-4 py-2 rounded-lg text-lg w-3/4 text-center shadow-lg">
+        {slides[currentSlide].description}
       </div>
-      {#each menus[currentMenu].items as item}
-        <div class="flex w-full justify-between py-2 border-b">
-          <span class="w-2/4 text-left">{item.name}</span>
-          <span class="w-1/4 text-right">{item.solo}</span>
-          <span class="w-1/4 text-left ml-4">{item.menu}</span>
+  
+      <!-- Price Tag -->
+      <div class="absolute bottom-5 bg-yellow-400 text-black px-4 py-2 rounded-full text-2xl">
+        {slides[currentSlide].price}
+      </div>
+    </div>
+  {:else}
+    <div class="w-full h-full flex flex-col text-center">
+      <h1 class="text-4xl font-bold mt-4">{menus[currentMenu].name}</h1>
+      <div class="flex flex-col items-center w-full flex-grow">
+        <!-- Menu List Headers -->
+        <div class="flex w-full justify-between border-b pb-2 text-xl font-bold">
+          <span class="w-2/4 text-left">Item</span>
+          <span class="w-1/4 text-right">Solo</span>
+          <span class="w-1/4 text-left ml-4">Menu</span>
         </div>
-      {/each}
-    </div>
-    <div class="w-full h-1/3 flex-shrink-0">
-      <img src={menus[currentMenu].image} class="w-full h-full object-cover" />
-    </div>
-  </div>  
+        <!-- Menu Items -->
+        {#each menus[currentMenu].items as item}
+          <div class="flex w-full justify-between py-2 border-b">
+            <span class="w-2/4 text-left">{item.name}</span>
+            <span class="w-1/4 text-right">{item.solo}</span>
+            <span class="w-1/4 text-left ml-4">{item.menu}</span>
+          </div>
+        {/each}
+      </div>
+      
+      <!-- Menu Image -->
+      <div class="w-full h-1/3 flex-shrink-0">
+        <img src={menus[currentMenu].image} 
+             class="w-full h-full object-contain" />
+      </div>
+    </div>  
   {/if}
 </div>
