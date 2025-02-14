@@ -4,30 +4,28 @@
   let currentMenu: number = 0;
 
   let showMenu = false;
-  
+
   const slides = [
-  { 
-    image: '/images/commercials/commercial1.jpg', 
-    text: 'Special Burger Deal', 
-    price: '$5.99',
-    description: 'Get our special burger with fresh ingredients and a soft bun!'
-  },
-  { 
-    image: '/images/commercials/commercial2.jpg', 
-    text: 'Crispy Nuggets', 
-    price: '$3.99',
-    description: 'Golden and crispy nuggets made from premium chicken.'
-  },
-  { 
-    image: '/images/commercials/commercial3.jpg', 
-    text: 'Tasty Sandwiches', 
-    price: '$4.99',
-    description: 'Enjoy our fresh sandwiches with delicious fillings!'
-  }
-];
+    { 
+      image: '/images/commercials/commercial1.jpg', 
+      text: 'Special Burger Deal', 
+      price: '$5.99',
+      description: 'Get our special burger with fresh ingredients and a soft bun!'
+    },
+    { 
+      image: '/images/commercials/commercial2.jpg', 
+      text: 'Crispy Nuggets', 
+      price: '$3.99',
+      description: 'Golden and crispy nuggets made from premium chicken.'
+    },
+    { 
+      image: '/images/commercials/commercial3.jpg', 
+      text: 'Tasty Sandwiches', 
+      price: '$4.99',
+      description: 'Enjoy our fresh sandwiches with delicious fillings!'
+    }
+  ];
 
-
-  
   const menus = [
     { name: 'Burgers', items: [
       { name: 'Cheese Burger', description: 'Juicy beef patty with cheese', solo: '$4.99', menu: '$7.99' },
@@ -53,7 +51,7 @@
       { name: 'Falafel Plate', description: 'Falafel with hummus & salad', solo: '$7.49', menu: '$10.49' }
     ], image: '/assiettes_3.jpg' }
   ];
-  
+
   function nextStep() {
     if (!showMenu) {
       if (currentSlide < slides.length - 1) {
@@ -71,7 +69,7 @@
       }
     }
   }
-  
+
   onMount(() => {
     const interval = setInterval(() => {
       nextStep();
@@ -84,8 +82,8 @@
   {#if !showMenu}
     <div class="relative w-full h-full flex flex-col justify-center items-center">
       <img src={slides[currentSlide].image} 
-         alt={slides[currentSlide].text} 
-         class="h-2/3 object-cover" />
+           alt={slides[currentSlide].text} 
+           class="h-2/3 object-cover" />
     
     <!-- Title -->
     <div class="absolute top-5 text-3xl font-bold">{slides[currentSlide].text}</div>
@@ -104,7 +102,7 @@
   {:else}
   <div class="w-full h-full flex flex-col text-center">
     <h1 class="text-4xl font-bold mt-4">{menus[currentMenu].name}</h1>
-    <div class="h-2/3 flex flex-col items-center w-3/4">
+    <div class="flex flex-col items-center w-full flex-grow">
       <div class="flex w-full justify-between border-b pb-2 text-xl font-bold">
         <span class="w-2/4 text-left">Item</span>
         <span class="w-1/4 text-right">Solo</span>
@@ -118,23 +116,9 @@
         </div>
       {/each}
     </div>
-    <img src={menus[currentMenu].image} class="h-1/3 object-cover" />
-  </div>
-  {#if !showMenu}
-  <div class="relative w-full h-full flex flex-col justify-center items-center">
-    <img src={slides[currentSlide].image} alt="Commercial" class="h-2/3 object-cover" />
-    <div class="absolute top-5 text-3xl font-bold">{slides[currentSlide].text}</div>
-    <div class="absolute bottom-5 flex flex-col items-center">
-      <div class="bg-yellow-400 text-black px-4 py-2 rounded-full text-2xl">
-        {slides[currentSlide].price}
-      </div>
-      <div class="bg-gray-800 bg-opacity-75 text-white text-lg px-3 py-1 rounded-lg mt-2">
-        {slides[currentSlide].description}
-      </div>
+    <div class="w-full h-1/3 flex-shrink-0">
+      <img src={menus[currentMenu].image} class="w-full h-full object-cover" />
     </div>
-  </div>
-{/if}
-
-  
+  </div>  
   {/if}
 </div>
