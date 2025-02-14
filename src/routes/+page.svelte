@@ -83,9 +83,12 @@
     <!-- Full-Screen Slide -->
     <div class="relative w-full h-full flex flex-col justify-center items-center">
       <!-- Full-Screen Image -->
-      <img src={slides[currentSlide].image} 
-           alt={slides[currentSlide].text} 
-           class="w-full h-full object-cover absolute inset-0" />
+      <img 
+        src={slides[currentSlide].image} 
+        alt={slides[currentSlide].text} 
+        class="w-full h-full object-cover absolute inset-0" 
+        onerror="this.src='/images/fallback.jpg'" 
+      />
     
       <!-- Title -->
       <div class="absolute top-5 text-8vw font-bold text-center z-10">
@@ -127,23 +130,21 @@
       </div>
       
       <!-- Full-Screen Menu Image -->
-      <img src={menus[currentMenu].image} 
-           class="w-full h-full object-cover absolute inset-0 z-0" />
+      <img 
+        src={menus[currentMenu].image} 
+        class="w-full h-full object-cover absolute inset-0 z-0" 
+        onerror="this.src='/images/fallback.jpg'" 
+      />
     </div>  
   {/if}
 </div>
 
 <style>
-  /* Ensure the viewport is properly scaled on mobile devices */
+  /* Ensure the viewport is properly scaled on all devices */
   html, body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-  }
-
-  /* Ensure images and text cover the entire screen */
-  img {
-    object-fit: cover;
   }
 
   /* Dynamic font scaling */
@@ -151,4 +152,9 @@
   .text-6vw { font-size: 6vw; }
   .text-4vw { font-size: 4vw; }
   .text-3vw { font-size: 3vw; }
+
+  /* Ensure images cover the entire screen */
+  img {
+    object-fit: cover;
+  }
 </style>
