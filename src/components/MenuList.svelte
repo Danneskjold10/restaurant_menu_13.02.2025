@@ -111,7 +111,7 @@
   
     <!-- Bottom Section: Category Image -->
     <img
-      src={menus[currentCategoryIndex].image}
+      src="/burger_1.jpg" 
       alt={menus[currentCategoryIndex].category}
       class="w-full h-[40vh] object-cover"
     />

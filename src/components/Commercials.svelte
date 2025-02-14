@@ -28,7 +28,7 @@
   <div class="h-screen flex flex-col bg-black text-white">
     <!-- Image (Full Screen) -->
     <img
-      src={commercials[currentIndex].image}
+      src="/images/commercials/commercial1.jpg"
       alt="Commercial"
       class="w-full h-[85vh] object-cover"
     />
