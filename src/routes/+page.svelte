@@ -78,42 +78,47 @@
   });
 </script>
 
-<div class="w-screen h-screen flex flex-col items-center bg-gray-900 text-white">
+<div class="w-screen h-screen flex flex-col items-center bg-gray-900 text-white overflow-hidden">
   {#if !showMenu}
+    <!-- Full-Screen Slide -->
     <div class="relative w-full h-full flex flex-col justify-center items-center">
-      <!-- Image Carousel -->
+      <!-- Full-Screen Image -->
       <img src={slides[currentSlide].image} 
            alt={slides[currentSlide].text} 
-           class="w-full h-4/6 object-cover" />
+           class="w-full h-full object-cover absolute inset-0" />
     
       <!-- Title -->
-      <div class="absolute top-5 text-xl md:text-2xl lg:text-3xl font-bold text-center px-4">
+      <div class="absolute top-5 text-8vw font-bold text-center z-10">
         {slides[currentSlide].text}
       </div>
   
       <!-- Description Bubble -->
-      <div class="absolute bottom-20 md:bottom-16 bg-gray-800 text-white px-4 py-2 rounded-lg text-sm md:text-lg w-11/12 md:w-3/4 text-center shadow-lg">
+      <div class="absolute bottom-20 bg-gray-800 text-white px-4 py-2 rounded-lg text-4vw w-3/4 text-center shadow-lg z-10">
         {slides[currentSlide].description}
       </div>
   
       <!-- Price Tag -->
-      <div class="absolute bottom-5 bg-yellow-400 text-black px-6 py-2 rounded-full text-lg md:text-2xl">
+      <div class="absolute bottom-5 bg-yellow-400 text-black px-4 py-2 rounded-full text-6vw z-10">
         {slides[currentSlide].price}
       </div>
     </div>
   {:else}
+    <!-- Full-Screen Menu -->
     <div class="w-full h-full flex flex-col text-center">
-      <h1 class="text-2xl md:text-4xl font-bold mt-4">{menus[currentMenu].name}</h1>
-      <div class="flex flex-col items-center w-full flex-grow px-2">
+      <!-- Menu Title -->
+      <h1 class="text-8vw font-bold mt-4 z-10">{menus[currentMenu].name}</h1>
+      
+      <!-- Menu Items -->
+      <div class="flex flex-col items-center w-full flex-grow z-10">
         <!-- Menu List Headers -->
-        <div class="flex w-full justify-between border-b pb-2 text-lg md:text-xl font-bold">
+        <div class="flex w-full justify-between border-b pb-2 text-4vw font-bold">
           <span class="w-2/4 text-left">Item</span>
           <span class="w-1/4 text-right">Solo</span>
           <span class="w-1/4 text-left ml-4">Menu</span>
         </div>
         <!-- Menu Items -->
         {#each menus[currentMenu].items as item}
-          <div class="flex w-full justify-between py-2 border-b text-sm md:text-lg">
+          <div class="flex w-full justify-between py-2 border-b text-3vw">
             <span class="w-2/4 text-left">{item.name}</span>
             <span class="w-1/4 text-right">{item.solo}</span>
             <span class="w-1/4 text-left ml-4">{item.menu}</span>
@@ -121,12 +126,29 @@
         {/each}
       </div>
       
-      <!-- Menu Image -->
-      <div class="w-full h-1/3 flex-shrink-0">
-        <img src={menus[currentMenu].image} 
-             class="w-full h-full object-cover" />
-      </div>
+      <!-- Full-Screen Menu Image -->
+      <img src={menus[currentMenu].image} 
+           class="w-full h-full object-cover absolute inset-0 z-0" />
     </div>  
   {/if}
 </div>
 
+<style>
+  /* Ensure the viewport is properly scaled on mobile devices */
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  /* Ensure images and text cover the entire screen */
+  img {
+    object-fit: cover;
+  }
+
+  /* Dynamic font scaling */
+  .text-8vw { font-size: 8vw; }
+  .text-6vw { font-size: 6vw; }
+  .text-4vw { font-size: 4vw; }
+  .text-3vw { font-size: 3vw; }
+</style>
