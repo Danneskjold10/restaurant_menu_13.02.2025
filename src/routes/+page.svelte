@@ -70,6 +70,12 @@
     }
   }
 
+  // Function to handle image loading errors
+  function handleImageError(event: Event) {
+    const img = event.target as HTMLImageElement;
+    img.src = '/images/fallback.jpg'; // Fallback image path
+  }
+
   onMount(() => {
     const interval = setInterval(() => {
       nextStep();
@@ -87,7 +93,7 @@
         src={slides[currentSlide].image} 
         alt={slides[currentSlide].text} 
         class="w-full h-full object-cover absolute inset-0" 
-        onerror="this.src='/images/fallback.jpg'" 
+        onerror={handleImageError} 
       />
     
       <!-- Title -->
@@ -133,7 +139,7 @@
       <img 
         src={menus[currentMenu].image} 
         class="w-full h-full object-cover absolute inset-0 z-0" 
-        onerror="this.src='/images/fallback.jpg'" 
+        onerror={handleImageError} 
       />
     </div>  
   {/if}
