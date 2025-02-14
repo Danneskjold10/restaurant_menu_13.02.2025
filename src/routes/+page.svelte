@@ -84,34 +84,36 @@
       <!-- Image Carousel -->
       <img src={slides[currentSlide].image} 
            alt={slides[currentSlide].text} 
-           class="h-2/3 object-contain" />
+           class="w-full h-4/6 object-cover" />
     
       <!-- Title -->
-      <div class="absolute top-5 text-3xl font-bold">{slides[currentSlide].text}</div>
+      <div class="absolute top-5 text-xl md:text-2xl lg:text-3xl font-bold text-center px-4">
+        {slides[currentSlide].text}
+      </div>
   
       <!-- Description Bubble -->
-      <div class="absolute bottom-16 bg-gray-800 text-white px-4 py-2 rounded-lg text-lg w-3/4 text-center shadow-lg">
+      <div class="absolute bottom-20 md:bottom-16 bg-gray-800 text-white px-4 py-2 rounded-lg text-sm md:text-lg w-11/12 md:w-3/4 text-center shadow-lg">
         {slides[currentSlide].description}
       </div>
   
       <!-- Price Tag -->
-      <div class="absolute bottom-5 bg-yellow-400 text-black px-4 py-2 rounded-full text-2xl">
+      <div class="absolute bottom-5 bg-yellow-400 text-black px-6 py-2 rounded-full text-lg md:text-2xl">
         {slides[currentSlide].price}
       </div>
     </div>
   {:else}
     <div class="w-full h-full flex flex-col text-center">
-      <h1 class="text-4xl font-bold mt-4">{menus[currentMenu].name}</h1>
-      <div class="flex flex-col items-center w-full flex-grow">
+      <h1 class="text-2xl md:text-4xl font-bold mt-4">{menus[currentMenu].name}</h1>
+      <div class="flex flex-col items-center w-full flex-grow px-2">
         <!-- Menu List Headers -->
-        <div class="flex w-full justify-between border-b pb-2 text-xl font-bold">
+        <div class="flex w-full justify-between border-b pb-2 text-lg md:text-xl font-bold">
           <span class="w-2/4 text-left">Item</span>
           <span class="w-1/4 text-right">Solo</span>
           <span class="w-1/4 text-left ml-4">Menu</span>
         </div>
         <!-- Menu Items -->
         {#each menus[currentMenu].items as item}
-          <div class="flex w-full justify-between py-2 border-b">
+          <div class="flex w-full justify-between py-2 border-b text-sm md:text-lg">
             <span class="w-2/4 text-left">{item.name}</span>
             <span class="w-1/4 text-right">{item.solo}</span>
             <span class="w-1/4 text-left ml-4">{item.menu}</span>
@@ -122,8 +124,9 @@
       <!-- Menu Image -->
       <div class="w-full h-1/3 flex-shrink-0">
         <img src={menus[currentMenu].image} 
-             class="w-full h-full object-contain" />
+             class="w-full h-full object-cover" />
       </div>
     </div>  
   {/if}
 </div>
+
